@@ -16,13 +16,18 @@ void setup()
 
 void leer(){
   digitalWrite(pinIR, HIGH); //"encendido" del IR
-  s[0] = analogRead(A0);
-  s[1] = analogRead(A1);
-  s[2] = analogRead(A2);
+  s[5] = analogRead(A1); //el A1 es el de mas a la derecha
+  s[4] = analogRead(A2);
   s[3] = analogRead(A3);
-  s[4] = analogRead(A4);
-  s[5] = analogRead(A5);
+  s[2] = analogRead(A4);
+  s[1] = analogRead(A5);
+  s[0] = analogRead(A6); //el A6 es el de mas a la izquierda
   digitalWrite(pinIR,LOW);//"apagado" del IR
+
+  for(int i = 0;i<6;i++){
+    s[i] = map(s[i],0,1023,1023,0) //asi lee linea blanca sobre fondo negro
+  } 
+
 }
 
 int posRel(){
