@@ -1,10 +1,10 @@
 //definicion pines
-#define boton 2;
-#define buzzer 10;
-#define pinIR 11;
+#define boton 2
+#define buzzer 10
+#define pinIR 11
 
 bool debug = true; //para evitar que se esten mandando los outputs en consola cambiar a false
-int sensores[6] = {analogRead(A0),analogRead(A1),analogRead(A2),analogRead(A3),analogRead(A4),analogRead(A5)};
+int sensores[] = {0,0,0,0,0,0};
 
 void leer(){
   digitalWrite(pinIR, HIGH); //"encendido" del IR
@@ -18,6 +18,18 @@ void leer(){
 }
 
 int posRel(){
+  leer();
+  float sumaPonderada = -2.5*sensores[0]-1.5*sensores[1]-0.5*sensores[2]+0.5*sensores[3]+1.5*sensores[4]+2.5*sensores[5];
+  float suma = sensores[0]+sensores[1]+sensores[2]+sensores[3]+sensores[4]+sensores[5];
+  bool enLinea = false;
+
+  if (suma > 1000){online = true};
+
+  if (online){
+    pos = 
+  }
+
+
   int ponderacion[6] = {-3,-2,-1,1,2,3};
   int suma = 0;
   for (int i = 0; i < 6; i++){
