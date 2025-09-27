@@ -25,7 +25,7 @@ void leer(){
   digitalWrite(pinIR,LOW);//"apagado" del IR
 
   for(int i = 0;i<6;i++){
-    s[i] = map(s[i],0,1023,1023,0) //asi lee linea blanca sobre fondo negro
+    s[i] = map(s[i],0,1023,1023,0); //asi lee linea blanca sobre fondo negro
   } 
 
 }
@@ -56,5 +56,19 @@ int posRel(){
 void loop()
 {
   int p = posRel();
-  if (debug){Serial.println(p);}
+  if (debug){
+    Serial.print(s[0]);
+    Serial.print("\t");
+    Serial.print(s[1]);
+    Serial.print("\t");
+    Serial.print(s[2]);
+    Serial.print("\t");
+    Serial.print(s[3]);
+    Serial.print("\t");
+    Serial.print(s[4]);
+    Serial.print("\t");
+    Serial.print(s[5]);
+    Serial.print("\t");
+    Serial.println(p);
+  }
 }
