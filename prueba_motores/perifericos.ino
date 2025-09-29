@@ -21,6 +21,6 @@ void bip(){
 
 void esperarBoton(){
   //para las pruebas de motores y sensores es util
-  while (digitalRead(boton) != false);
+  while (digitalRead(boton) == false);
   bip(); //avisa de que el boton si fue presionado
 }
