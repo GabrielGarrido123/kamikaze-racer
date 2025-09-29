@@ -1,17 +1,13 @@
 //definicion pines
-#define boton 2
-#define buzzer 10
 #define pinIR 11
 
-bool debug = true; //para evitar que se esten mandando los outputs en consola cambiar a false
-int s[] = {0,0,0,0,0,0};
+
 int pos = 0;
 int lastPos = 0;
 
-void setup()
+void sensores_setup()
 {
   pinMode(pinIR, OUTPUT);
-  Serial.begin(9600);
 }
 
 void leer(){
@@ -53,22 +49,3 @@ int posRel(){
   return pos;
 }
 
-void loop()
-{
-  int p = posRel();
-  if (debug){
-    Serial.print(s[0]);
-    Serial.print("\t");
-    Serial.print(s[1]);
-    Serial.print("\t");
-    Serial.print(s[2]);
-    Serial.print("\t");
-    Serial.print(s[3]);
-    Serial.print("\t");
-    Serial.print(s[4]);
-    Serial.print("\t");
-    Serial.print(s[5]);
-    Serial.print("\t");
-    Serial.println(p);
-  }
-}
