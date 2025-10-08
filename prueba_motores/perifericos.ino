@@ -6,9 +6,9 @@ void peri_setup(){
   pinMode(led,OUTPUT);
 }
 
-void bipBkn(int freq, int t, int espera){
+void bipBkn(float freq, int t, int espera){
   //hace un sonido personalizado
-  if (freq > 20000){freq=20000;} else if (freq < 20) {freq = 20;}
+  if (freq > 20000.0){freq=20000.0;} else if (freq < 20.0) {freq = 20.0;}
   tone(buzzer,freq, t);
   delay(t + espera); //tiempo de espera adicional entre tonos
 }
