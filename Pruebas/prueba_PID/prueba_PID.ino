@@ -9,8 +9,8 @@ float ki = 0.1; //cte integral
 float kd = 0.01; //cte derivada
 
 int v[] = {25,50,75,100,150};
-int vel = v[1]; //por defecto usara 50 como velocidad base
-int modo = 1;
+int vel = v[0]; //por defecto usara 50 como velocidad base
+int modo = 0;
 
 void setup(){
   peri_setup();
@@ -50,12 +50,19 @@ void setup(){
   }
   vel = v[modo];
 }
-
+int t = 0;
 void loop(){
   int p = posRel();
   int correccion = PID(p, kp, ki, kd);
 
 
   motores(vel + correccion, vel - correccion);
+  t+=1;
   delay(1);
+  if (t>1000){
+    motores(0,0);
+    esperarBoton();
+    
+    t=0;
+  }
 }
