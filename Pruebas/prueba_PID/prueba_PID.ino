@@ -4,9 +4,9 @@
 
 bool debug = true; //para evitar que se esten mandando los outputs en consola cambiar a false
 int s[] = {0,0,0,0,0,0};
-float kp = 0.39; //cte proporcional
-float ki = 0.1; //cte integral
-float kd = 0.01; //cte derivada
+float kp = 0.02; //cte proporcional
+float ki = 0; //cte integral
+float kd = 0.5; //cte derivada
 
 int v[] = {25,50,75,100,150};
 int vel = v[0]; //por defecto usara 50 como velocidad base
@@ -16,6 +16,9 @@ void setup(){
   peri_setup();
   sensores_setup();
   driverM_setup();
+
+  esperarBoton();
+  calibracion();
 
   int configurando = true;
   //configurar velocidad
@@ -59,7 +62,7 @@ void loop(){
   motores(vel + correccion, vel - correccion);
   t+=1;
   delay(1);
-  if (t>1000){
+  if (t>4000){
     motores(0,0);
     esperarBoton();
     
