@@ -15,8 +15,12 @@ void bipBkn(int freq, int t, int espera){
 
 void bip(){
   //un sonidito generico
-  tone(buzzer,2500, 100);
+  tone(buzzer,1500, 100);
   delay(200);
+}
+void bipAsync(int freq){
+  //un sonidito generico sin delay
+  tone(buzzer,freq, 50);
 }
 
 void esperarBoton(){
