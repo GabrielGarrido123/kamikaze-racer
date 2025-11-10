@@ -4,15 +4,17 @@
 
 bool debug = true; //para evitar que se esten mandando los outputs en consola cambiar a false
 int s[] = {0,0,0,0,0,0};
-float kp = 0.02; //cte proporcional
-float ki = 0; //cte integral
+float kp = 0.04; //cte proporcional
+float ki = 0.0; //cte integral
 float kd = 0.5; //cte derivada
+float multiplGiro = 1.0;
 
 int v[] = {25,50,75,100,150};
-int vel = v[0]; //por defecto usara 50 como velocidad base
-int modo = 0;
+int vel = v[1]; //por defecto usara 50 como velocidad base
+int modo = 1;
 
 void setup(){
+  //Serial.begin(9600);
   peri_setup();
   sensores_setup();
   driverM_setup();
@@ -53,19 +55,20 @@ void setup(){
   }
   vel = v[modo];
 }
-int t = 0;
+//int t = 0;
 void loop(){
   int p = posRel();
   int correccion = PID(p, kp, ki, kd);
+  hitos();
 
 
-  motores(vel + correccion, vel - correccion);
-  t+=1;
+  motores(vel*multiplGiro + correccion, vel*multiplGiro - correccion);
+//  t+=1;
   delay(1);
-  if (t>4000){
-    motores(0,0);
-    esperarBoton();
-    
-    t=0;
-  }
+//  if (t>4000){
+//    motores(0,0);
+//    esperarBoton();
+//    
+//    t=0;
+//  }
 }
