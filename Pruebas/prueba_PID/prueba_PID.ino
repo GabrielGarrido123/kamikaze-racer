@@ -4,7 +4,7 @@
 
 bool debug = true; //para evitar que se esten mandando los outputs en consola cambiar a false
 int s[] = {0,0,0,0,0,0};
-float kp = 0.04; //cte proporcional
+float kp = 0.08; //cte proporcional
 float ki = 0.0; //cte integral
 float kd = 0.5; //cte derivada
 float multiplGiro = 1.0;
@@ -12,7 +12,7 @@ float multiplGiro = 1.0;
 int v[] = {25,50,75,100,150};
 int vel = v[1]; //por defecto usara 50 como velocidad base
 int modo = 1;
-
+int contadorDerecho = 0;
 void setup(){
   //Serial.begin(9600);
   peri_setup();
@@ -63,12 +63,12 @@ void loop(){
 
 
   motores(vel*multiplGiro + correccion, vel*multiplGiro - correccion);
-//  t+=1;
+
+  if (contadorDerecho == 2){
+    motores(0,0);
+    esperarBoton();
+  }
+
   delay(1);
-//  if (t>4000){
-//    motores(0,0);
-//    esperarBoton();
-//    
-//    t=0;
-//  }
+
 }

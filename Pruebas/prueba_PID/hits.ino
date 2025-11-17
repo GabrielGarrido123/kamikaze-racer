@@ -47,8 +47,8 @@ void hitos() {
       
     }
     if (geo == 0 && geo1 == 2 && geo2 == 0) { //¿Pasamos el hito derecho?
-      //motores(0,0);
-      //bipAsync(1000);
+      //contadorDerecho += 1;
+      bipAsync(600);
     }
     if (geo == 0 && ((geo1 == 3) || (geo2 == 3) || (geo3 == 3))) { //¿Pasamos un cruce?
       //funcionCruce(); //Realizo las acciones para hito de cruce
